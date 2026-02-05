@@ -15,7 +15,6 @@ public:
     Letter(Color color, Position position, std::unique_ptr<IDrawStrategy> drawStrategy)
     : m_color(color), m_position(position), m_drawStrategy(std::move(drawStrategy))
     {
-
     }
 
     void SetColor(Color color)

@@ -14,11 +14,11 @@ public:
 
         sf::RectangleShape top(sf::Vector2f(200, 50));
         top.setFillColor(shapeColor);
-        top.setPosition(300, 200);
+        top.setPosition(position.m_x, position.m_y);
 
         sf::RectangleShape vertical(sf::Vector2f(50, 200));
         vertical.setFillColor(shapeColor);
-        vertical.setPosition(375, 250);
+        vertical.setPosition(position.m_x + 75, position.m_y + 50);
 
         window.draw(top);
         window.draw(vertical);
