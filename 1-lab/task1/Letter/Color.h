@@ -7,7 +7,7 @@ public:
     int g;
     int b;
 
-    Color(int red = 0, int green = 0, int blue = 0)
+    Color(int red, int green, int blue)
     {
         r = red;
         g = green;

@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Letter/Letter.h"
+#include "Letter/Strategy/StrategyA.h"
 #include "Letter/Strategy/StrategyE.h"
 #include "Letter/Strategy/StrategyT.h"
 
@@ -19,6 +20,12 @@ int main() {
          std::make_unique<StrategyE>()
      );
 
+    Letter A = Letter(
+         Color(0, 0, 255),
+         Position(550, 100),
+         std::make_unique<StrategyA>()
+     );
+
     while (window.isOpen()) {
         sf::Event event{};
         while (window.pollEvent(event)) {
@@ -31,6 +38,7 @@ int main() {
         // рисовать
         T.Draw(window);
         E.Draw(window);
+        A.Draw(window);
         window.display();
     }
 
