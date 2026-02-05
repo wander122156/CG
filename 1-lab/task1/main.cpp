@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Letter/Letter.h"
+#include "Letter/Strategy/StrategyE.h"
 #include "Letter/Strategy/StrategyT.h"
 
 int main() {
@@ -10,6 +11,12 @@ int main() {
          Color(255, 0, 0),
          Position(100, 100),
          std::make_unique<StrategyT>()
+     );
+
+    Letter E = Letter(
+         Color(0, 255, 0),
+         Position(350, 100),
+         std::make_unique<StrategyE>()
      );
 
     while (window.isOpen()) {
@@ -23,6 +30,7 @@ int main() {
         window.clear(sf::Color::Black);
         // рисовать
         T.Draw(window);
+        E.Draw(window);
         window.display();
     }
 
