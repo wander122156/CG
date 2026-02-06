@@ -4,7 +4,7 @@
 #include "../Position.h"
 #include "SFML/Graphics/RectangleShape.hpp"
 
-class StrategyE: public IDrawStrategy
+class DrawE: public IDrawStrategy
 {
 public:
     void Draw(sf::RenderWindow& window, Color color, Position position) override

@@ -19,10 +19,12 @@ add_executable(task1
         Letter/Color.h
         Letter/Letter.h
         Letter/Position.h
-        Letter/Strategy/IDrawStrategy.h
-        Letter/Strategy/StrategyT.h
-        Letter/Strategy/StrategyE.h
-        Letter/Strategy/StrategyA.h)
+        Letter/DrawStrategy/IDrawStrategy.h
+        Letter/DrawStrategy/DrawT.h
+        Letter/DrawStrategy/DrawE.h
+        Letter/DrawStrategy/DrawA.h
+        Letter/JumpStrategy/IJumpStrategy.h
+        Letter/JumpStrategy/UniformJump.h)
 
 add_custom_command(TARGET task1 POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different

@@ -5,7 +5,7 @@
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "SFML/System/Vector2.hpp"
 
-class StrategyT: public IDrawStrategy
+class DrawT: public IDrawStrategy
 {
 public:
     void Draw(sf::RenderWindow& window, Color color, Position position) override

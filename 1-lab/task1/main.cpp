@@ -1,9 +1,10 @@
 #include <SFML/Graphics.hpp>
 
 #include "Letter/Letter.h"
-#include "Letter/Strategy/StrategyA.h"
-#include "Letter/Strategy/StrategyE.h"
-#include "Letter/Strategy/StrategyT.h"
+#include "Letter/DrawStrategy/DrawA.h"
+#include "Letter/DrawStrategy/DrawE.h"
+#include "Letter/DrawStrategy/DrawT.h"
+#include "Letter/JumpStrategy/UniformJump.h"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1200, 800), "1-lab");
@@ -11,20 +12,25 @@ int main() {
     Letter T = Letter(
          Color(255, 0, 0),
          Position(100, 100),
-         std::make_unique<StrategyT>()
+         std::make_unique<DrawT>(),
+         std::make_unique<UniformJump>(350.0f, 980.0f)
      );
 
     Letter E = Letter(
          Color(0, 255, 0),
          Position(350, 100),
-         std::make_unique<StrategyE>()
+         std::make_unique<DrawE>(),
+         std::make_unique<UniformJump>(450.0f, 980.0f)
      );
 
     Letter A = Letter(
          Color(0, 0, 255),
          Position(550, 100),
-         std::make_unique<StrategyA>()
+         std::make_unique<DrawA>(),
+         std::make_unique<UniformJump>(550.0f, 980.0f)
      );
+
+    sf::Clock clock;
 
     while (window.isOpen()) {
         sf::Event event{};
@@ -34,11 +40,18 @@ int main() {
             }
         }
 
+        float deltaTime = clock.restart().asSeconds();
+        T.Update(deltaTime);
+        E.Update(deltaTime);
+        A.Update(deltaTime);
+
         window.clear(sf::Color::Black);
-        // рисовать
+
         T.Draw(window);
         E.Draw(window);
         A.Draw(window);
+
+
         window.display();
     }
 
