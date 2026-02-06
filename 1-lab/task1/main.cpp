@@ -6,41 +6,47 @@
 #include "Letter/DrawStrategy/DrawT.h"
 #include "Letter/JumpStrategy/UniformJump.h"
 
-int main() {
+int main()
+{
     sf::RenderWindow window(sf::VideoMode(1200, 800), "1-lab");
 
     Letter T = Letter(
-         Color(255, 0, 0),
-         Position(100, 300),
-         std::make_unique<DrawT>(),
-         std::make_unique<UniformJump>(550.0f, 980.0f)
-     );
+        Color(255, 0, 0),
+        Position(100, 300),
+        std::make_unique<DrawT>(),
+        std::make_unique<UniformJump>(550.0f, 980.0f)
+    );
 
     Letter E = Letter(
-         Color(0, 255, 0),
-         Position(350, 300),
-         std::make_unique<DrawE>(),
-         std::make_unique<UniformJump>(650.0f, 980.0f)
-     );
+        Color(0, 255, 0),
+        Position(350, 300),
+        std::make_unique<DrawE>(),
+        std::make_unique<UniformJump>(650.0f, 980.0f)
+    );
 
     Letter A = Letter(
-         Color(0, 0, 255),
-         Position(550, 300),
-         std::make_unique<DrawA>(),
-         std::make_unique<UniformJump>(750.0f, 980.0f)
-     );
+        Color(0, 0, 255),
+        Position(550, 300),
+        std::make_unique<DrawA>(),
+        std::make_unique<UniformJump>(750.0f, 980.0f)
+    );
 
     sf::Clock clock;
 
-    while (window.isOpen()) {
+    while (window.isOpen())
+    {
         sf::Event event{};
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
                 window.close();
             }
         }
 
         float deltaTime = clock.restart().asSeconds();
+
+        // логически правильней
         T.Update(deltaTime);
         E.Update(deltaTime);
         A.Update(deltaTime);
