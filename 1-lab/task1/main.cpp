@@ -11,23 +11,23 @@ int main() {
 
     Letter T = Letter(
          Color(255, 0, 0),
-         Position(100, 100),
+         Position(100, 300),
          std::make_unique<DrawT>(),
-         std::make_unique<UniformJump>(350.0f, 980.0f)
+         std::make_unique<UniformJump>(550.0f, 980.0f)
      );
 
     Letter E = Letter(
          Color(0, 255, 0),
-         Position(350, 100),
+         Position(350, 300),
          std::make_unique<DrawE>(),
-         std::make_unique<UniformJump>(450.0f, 980.0f)
+         std::make_unique<UniformJump>(650.0f, 980.0f)
      );
 
     Letter A = Letter(
          Color(0, 0, 255),
-         Position(550, 100),
+         Position(550, 300),
          std::make_unique<DrawA>(),
-         std::make_unique<UniformJump>(550.0f, 980.0f)
+         std::make_unique<UniformJump>(750.0f, 980.0f)
      );
 
     sf::Clock clock;
@@ -50,7 +50,6 @@ int main() {
         T.Draw(window);
         E.Draw(window);
         A.Draw(window);
-
 
         window.display();
     }
