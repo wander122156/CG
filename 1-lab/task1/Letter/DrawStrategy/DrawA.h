@@ -21,7 +21,7 @@ public:
         outerTriangle.setPoint(1, sf::Vector2f(width / 2 + 50, 0));
         outerTriangle.setPoint(2, sf::Vector2f(width + 50, height));
         outerTriangle.setFillColor(shapeColor);
-        outerTriangle.setPosition(position.m_x, position.m_y);
+        outerTriangle.setPosition({position.m_x, position.m_y});
 
         sf::ConvexShape innerTriangle;
         innerTriangle.setPointCount(3);
@@ -30,12 +30,12 @@ public:
         innerTriangle.setPoint(2, sf::Vector2f(width, height));
 
         innerTriangle.setFillColor(sf::Color::Black);
-        innerTriangle.setPosition(position.m_x, position.m_y);
+        innerTriangle.setPosition({position.m_x, position.m_y});
 
         sf::RectangleShape crossbar(sf::Vector2f(50, 100));
         crossbar.setFillColor(shapeColor);
-        crossbar.setRotation(90);
-        crossbar.setPosition(position.m_x + width, position.m_y+ height*0.65);
+        crossbar.setRotation(sf::degrees(90));
+        crossbar.setPosition({position.m_x + width, position.m_y+ height*0.65f});
 
 
         window.draw(outerTriangle);

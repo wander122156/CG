@@ -8,7 +8,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1200, 800), "1-lab");
+    sf::RenderWindow window(sf::VideoMode({1200, 800}), "1-lab");
 
     Letter T = Letter(
         Color(255, 0, 0),
@@ -35,10 +35,9 @@ int main()
 
     while (window.isOpen())
     {
-        sf::Event event{};
-        while (window.pollEvent(event))
+        while (const std::optional event = window.pollEvent())
         {
-            if (event.type == sf::Event::Closed)
+            if (event->is<sf::Event::Closed>())
             {
                 window.close();
             }
