@@ -25,6 +25,8 @@ int main()
         window.clear(sf::Color::Black);
 
         canvas.Draw(circle);
+
+        window.display();
     }
 
     return 0;

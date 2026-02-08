@@ -10,24 +10,24 @@ class Canvas
     sf::RenderWindow &m_window;
 
 
-    void DrawPixel(int x, int y)
+    void DrawPixel(int x, int y, Color color)
     {
         sf::Vertex point(
             sf::Vector2f(x, y),
-            sf::Color::Magenta);
+            sf::Color(color.r, color.g, color.b));
         m_window.draw(&point, 1, sf::PrimitiveType::Points);
     }
 
-    void Add8Points(int xc, int yc, int x, int y)
+    void Add8Points(int xc, int yc, int x, int y, Color color)
     {
-        DrawPixel(xc + x, yc + y);
-        DrawPixel(xc - x, yc + y);
-        DrawPixel(xc + x, yc - y);
-        DrawPixel(xc - x, yc - y);
-        DrawPixel(xc + y, yc + x);
-        DrawPixel(xc - y, yc + x);
-        DrawPixel(xc + y, yc - x);
-        DrawPixel(xc - y, yc - x);
+        DrawPixel(xc + x, yc + y, color);
+        DrawPixel(xc - x, yc + y, color);
+        DrawPixel(xc + x, yc - y, color);
+        DrawPixel(xc - x, yc - y, color);
+        DrawPixel(xc + y, yc + x, color);
+        DrawPixel(xc - y, yc + x, color);
+        DrawPixel(xc + y, yc - x, color);
+        DrawPixel(xc - y, yc - x, color);
     }
 
     void DrawCircleBresenham(Circle circle)
@@ -39,7 +39,7 @@ class Canvas
         int y = circle.GetRadius();
         int d = 3 - 2 * circle.GetRadius();
 
-        Add8Points(xc, yc, x, y);
+        Add8Points(xc, yc, x, y, circle.GetOutlineColor());
         while (y >= x)
         {
             if (d > 0)
@@ -49,14 +49,12 @@ class Canvas
             } else
                 d = d + 4 * x + 6;
 
-            // Increment x after updating decision parameter
             x++;
 
-            // Draw the circle using the new coordinates
-            Add8Points(xc, yc, x, y);
+            Add8Points(xc, yc, x, y, circle.GetOutlineColor());
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(5));
-            m_window.display();
+            // std::this_thread::sleep_for(std::chrono::milliseconds(50));
+            // m_window.display();
         }
     }
 
