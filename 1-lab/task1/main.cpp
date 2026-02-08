@@ -8,7 +8,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode({1200, 800}), "1-lab");
+    sf::RenderWindow window(sf::VideoMode({1200, 800}), "1.1");
 
     Letter T = Letter(
         Color(255, 0, 0),

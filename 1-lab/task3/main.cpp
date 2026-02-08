@@ -1,19 +1,31 @@
-#include <iostream>
+#include<iostream>
 
-void naiveDrawLine(int x1,int x2,int y1,int y2)
+#include "Canvas.h"
+#include "Circle.h"
+
+int main()
 {
+    sf::RenderWindow window = sf::RenderWindow(sf::VideoMode({1200, 800}), "1.1");
 
-    float m = (y2 - y1) / (x2 - x1);
+    Canvas canvas(window);
 
-    for (int x = x1; x <= x2; x++) {
-        // Assuming that the round function finds
-        // closest integer to a given float.
-        int y =  (m*x + c);
+    Circle circle(200,
+                  Position(500, 500),
+                  Color(1, 1, 1),
+                  Color(234, 12, 21));
 
-        std::cout << x << " " << y << std::endl;
+    while (window.isOpen())
+    {
+        while (const auto event = window.pollEvent())
+        {
+            if (event->is<sf::Event::Closed>())
+                window.close();
+        }
+
+        window.clear(sf::Color::Black);
+
+        canvas.Draw(circle);
     }
-}
 
-int main() {
-
+    return 0;
 }
